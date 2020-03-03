@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function Home(){
     return (
@@ -24,7 +25,11 @@ function Home(){
               <button className="scores">SCORES</button>
             </div>
             <div>
-              <button className="start">START</button>
+              <Link to="/game"> 
+                <button className="start">
+                  PLAY
+                </button>
+              </Link>
             </div>
           </div>
         </div>
