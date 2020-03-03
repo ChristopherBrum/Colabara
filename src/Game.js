@@ -17,8 +17,19 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>{this.state.phrase}</p>
+      <div className="game-box">
+        <div className="text-box">
+          <p>{this.state.phrase}</p>
+        </div>
+        <div className="b1">
+          <button>Answer</button>
+        </div>
+        <div className="b2">
+          <button>Answer</button>
+        </div>
+        <div className="b3">
+          <button onClick ={() => window.location.reload()}>Next</button>
+        </div>
       </div>
     )
   }
