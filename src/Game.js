@@ -1,16 +1,25 @@
 import React from 'react'
 
-function Game() {
-  let colors = ["yellow", "blue", "red", "black"]
-  let sample = colors[0]
+class Game extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      phrase: this.changePhrase()
+    }
+  }
 
-  return (
-    <div>
-      <p>the sky is {sample}</p>
-      <button>{colors[1]}</button>
-      <button>{colors[2]}</button>
-    </div>
-  )
+  changePhrase(){
+    const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of"]
+    return phrases[Math.floor(Math.random() * phrases.length)]
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.phrase}</p>
+      </div>
+    )
+  }
 }
 
 export default Game
