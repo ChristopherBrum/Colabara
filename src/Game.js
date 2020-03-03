@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Game() {
-  let colors = [yellow, blue, red, black]
+  let colors = ["yellow", "blue", "red", "black"]
   let sample = colors[0]
 
   return (

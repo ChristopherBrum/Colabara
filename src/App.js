@@ -2,35 +2,32 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import Home from './Home'
+import AboutUs from './Game'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 
 function App() {
   return (
-    <div className="container">
-        <div className="title-container">
-          <h5 className="sub-title">WELCOME TO</h5>
-          <h1 className="title">COLABRAS</h1>
-          <h4 className="tag-title">A RETRO-FUTURISTIC GAME OF WORDS & COLORS</h4>
+    <div className="App">
+      <Router>
+        <div className="nav">
+          <Link className="l1" to="/">Home</Link>
+          <Link className="l2" to="/about_us">About us</Link>
         </div>
-      <div className="sub-container">
-        <div className="menu-container">
-          <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              GAME MODE
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button className="dropdown-item" type="button">WORDS</button>
-              <button className="dropdown-item" type="button">COLORS</button>
-              <button className="dropdown-item" type="button">WORDS & COLORS</button>
-            </div>
-          </div>
-          <div>
-            <button className="scores">SCORES</button>
-          </div>
-          <div>
-            <button className="start">START</button>
-          </div>
-        </div>
-      </div>
+        <Switch>
+          <Route path="/about_us">
+            <AboutUs />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
