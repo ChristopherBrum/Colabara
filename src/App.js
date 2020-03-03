@@ -3,25 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './Home'
-import AboutUs from './Game'
+import Game from './Game'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom"
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div className="nav">
-          <Link className="l1" to="/">Home</Link>
-          <Link className="l2" to="/about_us">About us</Link>
-        </div>
         <Switch>
-          <Route path="/about_us">
-            <AboutUs />
+          <Route path="/game">
+            <Game />
           </Route>
           <Route path="/">
             <Home />
