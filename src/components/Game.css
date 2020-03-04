@@ -1,0 +1,66 @@
+
+.word-color {
+    color: white;
+    font-size: 40px;
+
+}
+
+.phrase {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.next-button {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* WORD COLORS */
+
+.red {
+    color: red;
+    /* text-decoration: underline; */
+}
+
+.blue {
+    color: blue;
+    /* text-decoration: underline; */
+}
+
+.green {
+    color: green;
+    /* text-decoration: underline; */
+}
+
+.yellow {
+    color: yellow;
+    /* text-decoration: underline; */
+}   
+
+.orange {
+    color: orange;
+    /* text-decoration: underline; */
+}
+
+.purple {
+    color: purple;
+    /* text-decoration: underline; */
+}
+
+.pink {
+    color: pink;
+    /* text-decoration: underline; */
+}
+
+.brown {
+    color: brown;
+    /* text-decoration: underline; */
+}
+
+.gray {
+    color: gray;
+    /* text-decoration: underline; */
+}

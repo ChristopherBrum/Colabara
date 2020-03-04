@@ -1,22 +1,52 @@
 import React from 'react'
-import './Game.css'
+
+import './components/Game.css'
+
+
 
 class Game extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      phrase: this.changePhrase()
+      phrase: this.randomPhrase(),
+      word: this.randomWord(),
+      color: this.randomWordColor()
     }
   }
 
 
-  changePhrase(){
+  randomPhrase(){
+
     const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of"]
     return phrases[Math.floor(Math.random() * phrases.length)]
   }
 
+  randomWord(){
+    const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
+    return colors[Math.floor(Math.random() * colors.length)]
+  }
+
+  randomWordColor(){
+    const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
+    let changeFont = fontColor[Math.floor(Math.random() * fontColor.length)]
+    return changeFont;
+  }
+
+  changeEverything(){
+    this.setState({
+      phrase: this.randomPhrase(),
+      word: this.randomWord(),
+      color: this.randomWordColor()
+    })
+  }
+
   render() {
     return (
+
+      <div>
+        <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
+        <button className="next-button" onClick={() => this.changeEverything()}>next</button>
+
       <div className="game-box">
         <div className="text-box">
           <p>{this.state.phrase}</p>
@@ -30,6 +60,7 @@ class Game extends React.Component {
         <div className="b3">
           <button onClick ={() => window.location.reload()}>Next</button>
         </div>
+
       </div>
     )
   }
