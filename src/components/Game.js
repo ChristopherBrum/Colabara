@@ -31,7 +31,6 @@ class Game extends React.Component {
   };
 
   randomPhrase(){
-
     const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of", "I liked the bedroom before they painted it", "Thanks, this is the first time I painted my nails", "Your shoes are really really", "You don't often see people who's hair is", "I think it would look better in", "Today feels like a good day for", "I dont think chicken is supposed to be"]
     return phrases[Math.floor(Math.random() * phrases.length)]
   }
@@ -57,7 +56,8 @@ class Game extends React.Component {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
       color: AnsColor,
-      answers: randomColors
+      answers: randomColors,
+      count: this.increment()
     })
   }
 
