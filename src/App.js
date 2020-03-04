@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './components/Home'
 import Game from './components/Game'
+import Scores from './components/Scores'
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +24,9 @@ function App() {
         <Switch>
           <Route path="/game">
             <Game mode={mode} diff={diff} lang={lang} />
+          </Route>
+          <Route path="/scores">
+            <Scores />
           </Route>
           <Route path="/">
             <Home setDiff={setDiff} setMode={setMode} setLang={setLang} />
