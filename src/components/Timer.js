@@ -41,7 +41,7 @@ export default class Timer extends Component {
         return (
             <div className="counter-container">
                 { seconds === 0
-                    ? <h1>Time is up!</h1>
+                    ? <h1>Times up!</h1>
                     : <h1 className="counter">{seconds < 10 ? `0${seconds}` : seconds}</h1>
                 }
             </div>
