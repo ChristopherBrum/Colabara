@@ -7,10 +7,15 @@ class Game extends React.Component {
     this.state = {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
-      color: this.randomWordColor()
+      color: this.randomWordColor(),
+      count: 0
     }
   }
 
+  increment() {
+    this.setState({ count: this.state.count + 1
+    });
+  };
 
   randomPhrase(){
 
@@ -52,12 +57,12 @@ class Game extends React.Component {
               <button className="answer-button-two">Answer2</button>
             </div>
           </div>
-          {/* <div>
-            <button  className="next-button" onClick ={() => window.location.reload()}>Next</button>
-          </div> */}
           <div>
-            <button className="next-button" onClick={() => this.changeEverything()}>next</button>
+            <button className="next-button" onClick={() => this.changeEverything()} onClick={() => this.increment()}>next</button>
           </div>
+        </div>
+        <div>
+          <p className="attempts">Attempts {this.state.count}</p>
         </div>
       </div>
     )
