@@ -1,5 +1,6 @@
 import React from 'react'
-import './components/Game.css'
+import './Game.css'
+import Timer from './Timer.js'
 
 class Game extends React.Component {
   constructor(props){
@@ -45,6 +46,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <Timer diff={this.props.diff} />
         <div>
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
