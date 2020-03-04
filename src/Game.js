@@ -1,4 +1,5 @@
 import React from 'react'
+import './components/Game.css'
 
 class Game extends React.Component {
   constructor(props){
@@ -16,12 +17,12 @@ class Game extends React.Component {
   }
 
   randomWord(){
-    const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "black", "brown", "gray"]
+    const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
     return colors[Math.floor(Math.random() * colors.length)]
   }
 
   randomWordColor(){
-    const fontColor = ["red", "blue", "green"]
+    const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
     let changeFont = fontColor[Math.floor(Math.random() * fontColor.length)]
     return changeFont;
   }
@@ -37,8 +38,8 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.changeEverything()}>next</button>
-        <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span></p>
+        <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
+        <button className="next-button" onClick={() => this.changeEverything()}>next</button>
       </div>
     )
   }
