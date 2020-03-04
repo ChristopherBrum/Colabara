@@ -12,11 +12,32 @@
     font-weight: bold;
 }
 
+.answer-container {
+    display: flex;
+    justify-content: center;
+}
+
 .next-button {
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
 }
+
+.answer-button-one {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px 10px;
+}
+
+.answer-button-two {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px 10px;
+}
+
 
 /* WORD COLORS */
 
