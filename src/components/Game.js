@@ -2,15 +2,27 @@ import React from 'react'
 import './Game.css'
 import Timer from './Timer.js'
 
+function indexAnswer() {
+  return (Math.floor(Math.random()*4))
+}
+
+
 class Game extends React.Component {
   constructor(props){
     super(props)
+
+    let AnsColor = this.randomWordColor()
+    let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
+    randomColors[indexAnswer()]= AnsColor
+
     this.state = {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
-      color: this.randomWordColor(),
+      color: AnsColor,
+      answers: randomColors,
       count: 0
     }
+
   }
 
   increment() {
@@ -36,10 +48,15 @@ class Game extends React.Component {
   }
 
   changeEverything(){
+    let AnsColor = this.randomWordColor()
+    let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
+    randomColors[indexAnswer()]= AnsColor
+
     this.setState({
       phrase: this.randomPhrase(),
       word: this.randomWord(),
-      color: this.randomWordColor()
+      color: AnsColor,
+      answers: randomColors
     })
   }
 
@@ -50,13 +67,20 @@ class Game extends React.Component {
         <div>
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
+
         <div className="game-box">
           <div className="answer-container">
             <div>
-              <button className="answer-button-one">Answer1</button>
+              <button className="answer-button-one">{this.state.answers[0]}</button>
             </div>
             <div>
-              <button className="answer-button-two">Answer2</button>
+              <button className="answer-button-two">{this.state.answers[1]}</button>
+            </div>
+            <div>
+              <button className="answer-button-two">{this.state.answers[2]}</button>
+            </div>
+            <div>
+              <button className="answer-button-two">{this.state.answers[3]}</button>
             </div>
           </div>
           <div>
