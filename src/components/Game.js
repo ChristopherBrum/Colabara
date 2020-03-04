@@ -10,7 +10,6 @@ class Game extends React.Component {
       word: this.randomWord(),
       color: this.randomWordColor()
     }
-    // setTimeout(() => alert("time's up"), 30000)
   }
 
   // PHRASE AND WORD DISPLAY METHODS
@@ -40,16 +39,10 @@ class Game extends React.Component {
     })
   }
 
-  // TIME FUNCTION
-
-  // timerSet(props){
-  //   let timer = setTimeout(()
-  //   )
-
   render() {
     return (
       <div>
-        <Timer />
+        <Timer diff={this.props.diff} />
         <div>
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>

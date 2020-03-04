@@ -13,16 +13,19 @@ import {
 
 function App() {
 
+  const [mode, setMode] = useState("COLORS");
+  const [lang, setLang] = useState("ENGLISH");
+  const [diff, setDiff] = useState("EASY")
 
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/game">
-            <Game  />
+            <Game mode={mode} diff={diff} lang={lang} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home setDiff={setDiff} setMode={setMode} setLang={setLang} />
           </Route>
         </Switch>
       </Router>

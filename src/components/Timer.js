@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
+import './Game.css'
+import Game from './Game.js'
 
 export default class Timer extends Component {
-    state = {
-        seconds: 30
+    constructor(props){
+        super(props)
+        this.state = {
+            seconds: this.timeLength()
+        }
+    }
+
+    timeLength(){ 
+        console.log(this.props)       
+        let timing
+        if (this.props.diff === "EASY"){
+            timing = 60
+        } else if (this.props.diff === "MEDIUM"){
+            timing = 45
+        } else if (this.props.diff === "HARD"){
+            timing = 30
+        }
+        return timing
     }
 
     componentDidMount() {
+  
         this.myInterval = setInterval(() => {
             const { seconds } = this.state
 
@@ -20,10 +39,10 @@ export default class Timer extends Component {
     render() {
         const { seconds } = this.state
         return (
-            <div>
+            <div className="counter-container">
                 { seconds === 0
-                    ? <h1>Busted!</h1>
-                    : <h1 class="counter">{seconds < 10 ? `0${seconds}` : seconds}</h1>
+                    ? <h1>Time is up!</h1>
+                    : <h1 className="counter">{seconds < 10 ? `0${seconds}` : seconds}</h1>
                 }
             </div>
         )
