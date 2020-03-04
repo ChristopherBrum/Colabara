@@ -1,8 +1,5 @@
 import React from 'react'
-
 import './components/Game.css'
-
-
 
 class Game extends React.Component {
   constructor(props){
@@ -17,7 +14,7 @@ class Game extends React.Component {
 
   randomPhrase(){
 
-    const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of"]
+    const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of", "I liked the bedroom before they painted it", "Thanks, this is the first time I painted my nails", "Your shoes are really really", "You don't often see people who's hair is", "I think it would look better in", "Today feels like a good day for", "I dont think chicken is supposed to be"]
     return phrases[Math.floor(Math.random() * phrases.length)]
   }
 
@@ -42,25 +39,26 @@ class Game extends React.Component {
 
   render() {
     return (
-
       <div>
-        <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
-        <button className="next-button" onClick={() => this.changeEverything()}>next</button>
-
-      <div className="game-box">
-        <div className="text-box">
-          <p>{this.state.phrase}</p>
+        <div>
+          <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
-        <div className="b1">
-          <button>Answer</button>
+        <div className="game-box">
+          <div className="answer-container">
+            <div>
+              <button className="answer-button-one">Answer1</button>
+            </div>
+            <div>
+              <button className="answer-button-two">Answer2</button>
+            </div>
+          </div>
+          {/* <div>
+            <button  className="next-button" onClick ={() => window.location.reload()}>Next</button>
+          </div> */}
+          <div>
+            <button className="next-button" onClick={() => this.changeEverything()}>next</button>
+          </div>
         </div>
-        <div className="b2">
-          <button>Answer</button>
-        </div>
-        <div className="b3">
-          <button onClick ={() => window.location.reload()}>Next</button>
-        </div>
-
       </div>
     )
   }
