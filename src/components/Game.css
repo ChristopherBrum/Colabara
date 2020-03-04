@@ -38,6 +38,13 @@
     margin: 10px 10px;
 }
 
+/* temporary displays */
+.attempts {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    color: white;
+}
 
 /* WORD COLORS */
 
