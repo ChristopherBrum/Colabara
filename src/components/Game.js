@@ -1,5 +1,6 @@
 import React from 'react'
-import './components/Game.css'
+import './Game.css'
+import Timer from './Timer.js'
 
 function indexAnswer() {
   return (Math.floor(Math.random()*4))
@@ -18,11 +19,16 @@ class Game extends React.Component {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
       color: AnsColor,
-      answers: randomColors
+      answers: randomColors,
+      count: 0
     }
 
   }
 
+  increment() {
+    this.setState({ count: this.state.count + 1
+    });
+  };
 
   randomPhrase(){
 
@@ -57,6 +63,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <Timer diff={this.props.diff} />
         <div>
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
@@ -76,12 +83,12 @@ class Game extends React.Component {
               <button className="answer-button-two">{this.state.answers[3]}</button>
             </div>
           </div>
-          {/* <div>
-            <button  className="next-button" onClick ={() => window.location.reload()}>Next</button>
-          </div> */}
           <div>
-            <button className="next-button" onClick={() => this.changeEverything()}>next</button>
+            <button className="next-button" onClick={() => this.changeEverything()} onClick={() => this.increment()}>next</button>
           </div>
+        </div>
+        <div>
+          <p className="attempts">Attempts {this.state.count}</p>
         </div>
       </div>
     )
