@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Home from './Home'
-import Game from './Game'
-
+import Home from './components/Home'
+import Game from './components/Game'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,12 +13,13 @@ import {
 
 function App() {
 
+
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/game">
-            <Game />
+            <Game  />
           </Route>
           <Route path="/">
             <Home />

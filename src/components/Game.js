@@ -1,5 +1,6 @@
 import React from 'react'
-import './components/Game.css'
+import './Game.css'
+import Timer from './Timer.js'
 
 class Game extends React.Component {
   constructor(props){
@@ -9,8 +10,10 @@ class Game extends React.Component {
       word: this.randomWord(),
       color: this.randomWordColor()
     }
+    // setTimeout(() => alert("time's up"), 30000)
   }
 
+  // PHRASE AND WORD DISPLAY METHODS
 
   randomPhrase(){
 
@@ -37,9 +40,16 @@ class Game extends React.Component {
     })
   }
 
+  // TIME FUNCTION
+
+  // timerSet(props){
+  //   let timer = setTimeout(()
+  //   )
+
   render() {
     return (
       <div>
+        <Timer />
         <div>
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
@@ -52,9 +62,6 @@ class Game extends React.Component {
               <button className="answer-button-two">Answer2</button>
             </div>
           </div>
-          {/* <div>
-            <button  className="next-button" onClick ={() => window.location.reload()}>Next</button>
-          </div> */}
           <div>
             <button className="next-button" onClick={() => this.changeEverything()}>next</button>
           </div>
