@@ -1,5 +1,8 @@
 import React from 'react'
+
 import './components/Game.css'
+
+
 
 class Game extends React.Component {
   constructor(props){
@@ -11,7 +14,9 @@ class Game extends React.Component {
     }
   }
 
+
   randomPhrase(){
+
     const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of"]
     return phrases[Math.floor(Math.random() * phrases.length)]
   }
@@ -37,9 +42,25 @@ class Game extends React.Component {
 
   render() {
     return (
+
       <div>
         <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         <button className="next-button" onClick={() => this.changeEverything()}>next</button>
+
+      <div className="game-box">
+        <div className="text-box">
+          <p>{this.state.phrase}</p>
+        </div>
+        <div className="b1">
+          <button>Answer</button>
+        </div>
+        <div className="b2">
+          <button>Answer</button>
+        </div>
+        <div className="b3">
+          <button onClick ={() => window.location.reload()}>Next</button>
+        </div>
+
       </div>
     )
   }
