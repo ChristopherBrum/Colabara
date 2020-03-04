@@ -55,7 +55,8 @@ class Game extends React.Component {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
       color: AnsColor,
-      answers: randomColors
+      answers: randomColors,
+      count: this.increment()
     })
   }
 
@@ -83,7 +84,7 @@ class Game extends React.Component {
             </div>
           </div>
           <div>
-            <button className="next-button" onClick={() => this.changeEverything()} onClick={() => this.increment()}>next</button>
+            <button className="next-button" onClick={() => this.changeEverything()}>next</button>
           </div>
         </div>
         <div>
