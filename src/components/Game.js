@@ -59,8 +59,8 @@ class Game extends React.Component {
                       "My favorite color is", 
                       "It looks like that orange is actually", 
                       "The painter used a lot of", 
-                      "I liked the bedroom before they painted it", 
-                      "Thanks, this is the first time I painted my nails", 
+                      "I liked it better before they painted it", 
+                      "I think my nails look good painted", 
                       "Your shoes are really really", 
                       "You don't often see people who's hair is", 
                       "I think it would look better in", 
@@ -103,7 +103,6 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <Timer diff={this.props.diff} />
         <div className="phrase-container">
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
@@ -123,8 +122,9 @@ class Game extends React.Component {
               <button className="answer-button-two">{this.state.answers[3]}</button>
             </div>
           </div>
-          <div>
-            <button className="next-button" onClick={() => this.changeEverything()} >next</button>
+          <div className="timer-container">
+            <Timer diff={this.props.diff} />
+            <button className="next-button" onClick={() => this.changeEverything()} >NEXT</button>
           </div>
         </div>
         <div>
