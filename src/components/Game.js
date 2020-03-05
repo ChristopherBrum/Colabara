@@ -6,7 +6,6 @@ function indexAnswer() {
   return (Math.floor(Math.random()*4))
 }
 
-
 class Game extends React.Component {
   constructor(props){
     super(props)
@@ -25,9 +24,55 @@ class Game extends React.Component {
 
   }
 
+
+  // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
+
+    colorDiff(){
+      let levelDiff 
+      if (this.props.diff === "MEDIUM"){
+          return this.changePhraseColor()
+      } else if (this.props.diff === "HARD"){
+          return
+      } else {
+        return this.state.phrase
+      }
+    }
+
+    changePhraseColor(){
+      let colorfulPhrases = this.randomPhrase()
+      colorfulPhrases.split(" ").map( word => {return <span style={{ color: this.randomWordColor() }}>{`${word} `}</span>;
+      })
+    }
+
+  // INCREMENT COUNTER 
+
+  increment() {
+    this.setState({ count: this.state.count + 1
+    });
+  };
+
+  // EASY REFRESH OF PHRASE/WORD/WORD-COLOR
+
   randomPhrase(){
-    const phrases = ["The car is", "Today, the sky was", "My favorite color is", "It looks like that orange is actually", "The painter used a lot of", "I liked the bedroom before they painted it", "Thanks, this is the first time I painted my nails", "Your shoes are really really", "You don't often see people who's hair is", "I think it would look better in", "Today feels like a good day for", "I dont think chicken is supposed to be"]
-    return phrases[Math.floor(Math.random() * phrases.length)]
+    const phrases =   ["The car is", 
+                      "Today, the sky was", 
+                      "My favorite color is", 
+                      "It looks like that orange is actually", 
+                      "The painter used a lot of", 
+                      "I liked the bedroom before they painted it", 
+                      "Thanks, this is the first time I painted my nails", 
+                      "Your shoes are really really", 
+                      "You don't often see people who's hair is", 
+                      "I think it would look better in", 
+                      "Today feels like a good day for", 
+                      "I dont think chicken is supposed to be"]
+    if (this.props.diff === "MEDIUM"){
+      return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
+        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p>
+      );
+    } else {
+      return phrases[Math.floor(Math.random() * phrases.length)]
+    }
   }
 
   randomWord(){
@@ -59,7 +104,7 @@ class Game extends React.Component {
     return (
       <div>
         <Timer diff={this.props.diff} />
-        <div>
+        <div className="phrase-container">
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
 

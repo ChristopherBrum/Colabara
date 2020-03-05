@@ -5,11 +5,18 @@
 
 }
 
+.phrase-container {
+    display: flex;
+    justify-content: center;
+}
+
 .phrase {
     color: white;
     font-size: 40px;
-    text-align: center;
     font-weight: bold;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .answer-container {
@@ -32,7 +39,7 @@
 }
 
 .answer-button-two {
-    display: flex;
+    display: flex;  
     margin-left: auto;
     margin-right: auto;
     margin: 10px 10px;
@@ -50,47 +57,61 @@
 
 .red {
     color: red;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .blue {
     color: blue;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .green {
     color: green;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .yellow {
     color: yellow;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }   
 
 .orange {
     color: orange;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .purple {
     color: purple;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .pink {
     color: pink;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .brown {
     color: brown;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .gray {
     color: gray;
-    /* text-decoration: underline; */
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.med-diff-phrase {
+    display: flex;
+    margin: 0px 5px;
 }
   
 /* GAME COUNTER */
