@@ -10,8 +10,7 @@ export default class Timer extends Component {
         }
     }
 
-    timeLength(){ 
-        console.log(this.props)       
+    timeLength(){       
         let timing
         if (this.props.diff === "EASY"){
             timing = 60
