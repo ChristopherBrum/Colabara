@@ -24,6 +24,7 @@ class Game extends React.Component {
 
   }
 
+
   // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
 
     colorDiff(){
@@ -86,7 +87,6 @@ class Game extends React.Component {
   }
 
   changeEverything(){
-    this.increment()
     let AnsColor = this.randomWordColor()
     let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
     randomColors[indexAnswer()]= AnsColor
@@ -96,7 +96,7 @@ class Game extends React.Component {
       word: this.randomWord(),
       color: AnsColor,
       answers: randomColors,
-      count: this.increment()
+      count: this.state.count + 1
     })
   }
 
