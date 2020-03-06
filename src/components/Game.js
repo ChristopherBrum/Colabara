@@ -30,6 +30,7 @@ class Game extends React.Component {
       if (this.props.diff === "MEDIUM"){
         return this.changePhraseColor()
       } else if (this.props.diff === "HARD"){
+
         return this.changePhraseColor()
       } 
       return this.state.phrase
@@ -86,7 +87,6 @@ class Game extends React.Component {
   randomWordColor(){
     const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
     return fontColor[Math.floor(Math.random() * fontColor.length)]
-
   }
 
   changeEverything(){
@@ -113,16 +113,16 @@ class Game extends React.Component {
         <div className="game-box">
           <div className="answer-container">
             <div>
-              <button className="answer-button-one">{this.state.answers[0]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[0]}</button>
             </div>
             <div>
-              <button className="answer-button-two">{this.state.answers[1]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[1]}</button>
             </div>
             <div>
-              <button className="answer-button-two">{this.state.answers[2]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[2]}</button>
             </div>
             <div>
-              <button className="answer-button-two">{this.state.answers[3]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[3]}</button>
             </div>
           </div>
           <div className="timer-container">
