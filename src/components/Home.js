@@ -44,12 +44,14 @@ function Home(props){
        
 
                 <div>
-                  <button className="scores">SCORES</button>
+                  <Link to="/scores">
+                    <button className="scores">SCORES</button>
+                  </Link>
                 </div>
 
                 <div>
-                <Link to="/game"> 
-                  <button className="start">START</button>
+                  <Link to="/game"> 
+                    <button className="start">START</button>
                   </Link>
                 </div>
 

@@ -21,9 +21,7 @@ class Game extends React.Component {
       answers: randomColors,
       count: 0
     }
-
   }
-
 
   // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
 
@@ -31,8 +29,6 @@ class Game extends React.Component {
       let levelDiff 
       if (this.props.diff === "MEDIUM"){
           return this.changePhraseColor()
-      } else if (this.props.diff === "HARD"){
-          return
       } else {
         return this.state.phrase
       }
@@ -40,7 +36,7 @@ class Game extends React.Component {
 
     changePhraseColor(){
       let colorfulPhrases = this.randomPhrase()
-      colorfulPhrases.split(" ").map( word => {return <span style={{ color: this.randomWordColor() }}>{`${word} `}</span>;
+      colorfulPhrases.split(" ").map( word => {return <span style={{ color: this.randomWordColor() }}>{{word}}</span>;
       })
     }
 
@@ -65,7 +61,11 @@ class Game extends React.Component {
                       "You don't often see people who's hair is", 
                       "I think it would look better in", 
                       "Today feels like a good day for", 
-                      "I dont think chicken is supposed to be"]
+                      "I dont think chicken is supposed to be",
+                      "Your bicycle is",
+                      "The flowers are quite",
+                      "You look great in"]
+
     if (this.props.diff === "MEDIUM"){
       return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
         <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p>
