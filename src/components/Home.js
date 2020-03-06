@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
+import cobraWhite from "./cobrawhite.png";
 
 function Home(props){
 
@@ -12,7 +13,10 @@ function Home(props){
             
             <div className="title-container">
               <h5 className="sub-title">WELCOME TO</h5>
-              <h1 className="title">COLABRAS</h1>
+              <div className="colabras-title">
+                <h1 className="title">COLABRA</h1>
+                <img className="cobra-logo" src={cobraWhite} alt="Colabra Cobra Mascot"></img>
+              </div>
               <h4 className="tag-title">A RETRO-FUTURISTIC GAME OF WORDS & COLORS</h4>
             </div>
                  

@@ -28,10 +28,11 @@ class Game extends React.Component {
     colorDiff(){
       let levelDiff 
       if (this.props.diff === "MEDIUM"){
-          return this.changePhraseColor()
-      } else {
-        return this.state.phrase
-      }
+        return this.changePhraseColor()
+      } else if (this.props.diff === "HARD"){
+        return this.changePhraseColor()
+      } 
+      return this.state.phrase
     }
 
     changePhraseColor(){
@@ -68,8 +69,10 @@ class Game extends React.Component {
 
     if (this.props.diff === "MEDIUM"){
       return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
-        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p>
-      );
+        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
+    } else if (this.props.diff === "HARD"){      
+      return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
+        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
     } else {
       return phrases[Math.floor(Math.random() * phrases.length)]
     }
@@ -82,15 +85,15 @@ class Game extends React.Component {
 
   randomWordColor(){
     const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
-    let changeFont = fontColor[Math.floor(Math.random() * fontColor.length)]
-    return changeFont;
+    return fontColor[Math.floor(Math.random() * fontColor.length)]
+
   }
 
   changeEverything(){
     let AnsColor = this.randomWordColor()
     let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
     randomColors[indexAnswer()]= AnsColor
-
+ 
     this.setState({
       phrase: this.randomPhrase(),
       word: this.randomWord(),
