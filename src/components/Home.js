@@ -54,7 +54,7 @@ function Home(props){
                 </div>
 
                 <div>
-                  <Link to="/game"> 
+                  <Link to="/game">  
                     <button className="start">START</button>
                   </Link>
                 </div>

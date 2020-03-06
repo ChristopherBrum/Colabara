@@ -11,17 +11,72 @@ class Game extends React.Component {
     super(props)
 
     let AnsColor = this.randomWordColor()
-    let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
-    randomColors[indexAnswer()]= AnsColor
+    let buttonColors = [this.randomWord(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
+    
+    
+    buttonColors[indexAnswer()]= AnsColor
 
     this.state = {
       phrase: this.randomPhrase(),
       word: this.randomWord(),
       color: AnsColor,
-      answers: randomColors,
-      count: 0
+      answers: buttonColors,
+      count: 0,
+      countAns: 0,
+      colorSelected: null
+
     }
   }
+
+  randomWord(){
+    const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
+    return colors[Math.floor(Math.random() * colors.length)]
+  }
+
+  randomWordColor(){
+    const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
+    return fontColor[Math.floor(Math.random() * fontColor.length)]
+
+  }
+  colorChosen(color) {
+    console.log("clicked: ", color)
+       this.setState({ colorSelected: color })
+    }
+
+  changeEverything(){
+        let score = this.state.countAns
+    if (this.state.colorSelected === this.state.color){
+      score ++
+    }
+
+    let AnsColor = this.randomWordColor()
+    let buttonColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
+    console.log("respuesta: ", AnsColor)
+    // console.log("elegido: ", this.state.colorSelected)
+   
+       
+    buttonColors[indexAnswer()]= AnsColor
+
+    this.setState({
+      phrase: this.randomPhrase(),
+      word: this.randomWord(),
+      color: AnsColor,
+      answers: buttonColors,
+      count: this.state.count + 1,
+      countAns: score 
+    })
+  }
+
+           // INCREMENT COUNTER 
+
+    increment() {
+      this.setState({ count: this.state.count + 1
+      });
+    };
+    incrementAns() {
+      this.setState({ countAns: this.state.count + 1
+      });
+    }; 
 
   // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
 
@@ -41,13 +96,6 @@ class Game extends React.Component {
       colorfulPhrases.split(" ").map( word => {return <span style={{ color: this.randomWordColor() }}>{{word}}</span>;
       })
     }
-
-  // INCREMENT COUNTER 
-
-  increment() {
-    this.setState({ count: this.state.count + 1
-    });
-  };
 
   // EASY REFRESH OF PHRASE/WORD/WORD-COLOR
 
@@ -79,30 +127,6 @@ class Game extends React.Component {
     }
   }
 
-  randomWord(){
-    const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
-    return colors[Math.floor(Math.random() * colors.length)]
-  }
-
-  randomWordColor(){
-    const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
-    return fontColor[Math.floor(Math.random() * fontColor.length)]
-  }
-
-  changeEverything(){
-    let AnsColor = this.randomWordColor()
-    let randomColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
-    randomColors[indexAnswer()]= AnsColor
- 
-    this.setState({
-      phrase: this.randomPhrase(),
-      word: this.randomWord(),
-      color: AnsColor,
-      answers: randomColors,
-      count: this.state.count + 1
-    })
-  }
-
   render() {
     return (
       <div>
@@ -113,16 +137,18 @@ class Game extends React.Component {
         <div className="game-box">
           <div className="answer-container">
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[0]}</button>
+
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[0])} >{this.state.answers[0]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[1]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[1])} >{this.state.answers[1]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[2]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[2])} >{this.state.answers[2]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button">{this.state.answers[3]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[3])} >{this.state.answers[3]}</button>
+
             </div>
           </div>
           <div className="timer-container">
@@ -132,6 +158,7 @@ class Game extends React.Component {
         </div>
         <div>
           <p className="attempts">Attempts {this.state.count}</p>
+          <p className="attempts">Correct Attempts {this.state.countAns}</p>
         </div>
       </div>
     )
