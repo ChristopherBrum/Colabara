@@ -12,8 +12,6 @@ class Game extends React.Component {
 
     let AnsColor = this.randomWordColor()
     let buttonColors = [this.randomWord(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
-    
-    
     buttonColors[indexAnswer()]= AnsColor
 
     this.state = {
@@ -24,7 +22,6 @@ class Game extends React.Component {
       count: 0,
       countAns: 0,
       colorSelected: null
-
     }
   }
 
@@ -45,6 +42,7 @@ class Game extends React.Component {
 
   changeEverything(){
         let score = this.state.countAns
+        let questionCount = this.state.count
     if (this.state.colorSelected === this.state.color){
       score ++
     }
@@ -66,6 +64,11 @@ class Game extends React.Component {
       countAns: score 
     })
   }
+          // SEND SCORE FUNCTION
+
+    sendScore = () => {
+      this.props.func(this.state.count, this.state.countAns)
+    }
 
            // INCREMENT COUNTER 
 
@@ -138,22 +141,23 @@ class Game extends React.Component {
           <div className="answer-container">
             <div>
 
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[0])} >{this.state.answers[0]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[0])} >{this.state.answers[0]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[1])} >{this.state.answers[1]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[1])} >{this.state.answers[1]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[2])} >{this.state.answers[2]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[2])} >{this.state.answers[2]}</button>
             </div>
             <div>
-              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button-one" onClick={() => this.colorChosen(this.state.answers[3])} >{this.state.answers[3]}</button>
+              <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[3])} >{this.state.answers[3]}</button>
 
             </div>
           </div>
           <div className="timer-container">
-            <Timer diff={this.props.diff} />
+            <Timer diff={this.props.diff} send={this.props.func} setCount1={this.props.setCount1}/>
             <button className="next-button" onClick={() => this.changeEverything()} >NEXT</button>
+            <button className="next-button" onClick={() => this.props.setCount1(10)} >set 10</button>
           </div>
         </div>
         <div>

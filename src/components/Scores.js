@@ -6,7 +6,7 @@ function accuracy(){
 
 }
 
-function score(){
+function calcScore(){
     if (this.props.diff === "EASY"){
 
     } else if (this.props.diff === "MEDIUM"){
@@ -30,7 +30,7 @@ export default function Scores(props){
                     <h1 className="score-title">YOUR SCORE</h1>
                     <div className="scores-info">
                         <h4 className="score-description">CORRECT / ATTEMPTS: </h4>
-                        <h3>18 / 21</h3>
+                        <h3>{props.goodAttempts} / {props.allAttempts}</h3>
                         <h4 className="score-description">ACCURACY: </h4>
                         <h3> 85%</h3>
                         <h4 className="score-description">SCORE: </h4>

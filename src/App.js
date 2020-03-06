@@ -14,19 +14,25 @@ import {
 
 function App() {
 
+  const [count1, setCount1] = useState(1);
+  const [count2, setCount2] = useState(1);
   const [mode, setMode] = useState("COLORS");
   const [lang, setLang] = useState("ENGLISH");
   const [diff, setDiff] = useState("EASY")
+
+  let getScore = (count) => {
+    setCount1(count)
+  }
 
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/game">
-            <Game mode={mode} diff={diff} lang={lang} />
+            <Game mode={mode} diff={diff} lang={lang} func={getScore} setCount1={(score) => {getScore(score)}} />
           </Route>
           <Route path="/scores">
-            <Scores />
+            <Scores allAttempts={count1} goodAttempts={count2} />
           </Route>
           <Route path="/">
             <Home setDiff={setDiff} setMode={setMode} setLang={setLang} />

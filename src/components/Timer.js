@@ -13,7 +13,7 @@ export default class Timer extends Component {
     timeLength(){       
         let timing
         if (this.props.diff === "EASY"){
-            timing = 60
+            timing = 2
         } else if (this.props.diff === "MEDIUM"){
             timing = 45
         } else if (this.props.diff === "HARD"){
