@@ -39,14 +39,13 @@ function Home(props){
                     </div>
                     
                     <div>            
-                      <button className="innerButton" onClick ={() =>props.setLang("ENGLISH")} >ENGLISH</button>
+                      <button className="innerButton" onClick ={() =>props.setLang("ENGLISH")}>ENGLISH</button>
                       <button className="innerButton" onClick ={() =>props.setLang("SPANISH")}>SPANISH</button>
                       <button className="innerButton" onClick ={() =>props.setLang("MIXED")}>MIXED</button>              
                     </div>
                     
                 </div>}
        
-
                 <div>
                   <Link to="/scores">
                     <button className="scores">SCORES</button>
