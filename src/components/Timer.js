@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Game.css'
-import Game from './Game.js'
+import { Redirect } from 'react-router-dom'
 
 export default class Timer extends Component {
     constructor(props){
@@ -40,7 +40,7 @@ export default class Timer extends Component {
         return (
             <div className="counter-container">
                 { seconds === 0
-                    ? window.location = './scores'
+                    ? <Redirect to='/scores' />
                     : <h1 className="counter">{seconds < 10 ? `0${seconds}` : seconds}</h1>
                 }
             </div>

@@ -16,7 +16,7 @@ class Game extends React.Component {
 
     this.state = {
       phrase: this.randomPhrase(),
-      word: this.randomWord(),
+      word: this.wordLanguage(),
       color: AnsColor,
       answers: buttonColors,
       count: 0,
@@ -24,16 +24,24 @@ class Game extends React.Component {
       colorSelected: null
     }
   }
-
+  wordLanguage(){
+    if (this.props.lang === "ENGLISH"){
+      return this.randomWord()
+    } else if (this.props.lang === "SPANISH"){
+      return this.randomWordEsp()
+    }
+  }
   randomWord(){
     const colors = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
     return colors[Math.floor(Math.random() * colors.length)]
   }
-
+  randomWordEsp(){
+    const colors = ["rojo", "amarillo", "azul", "verde", "naranja", "purpura", "rosado", "café", "gris"]
+    return colors[Math.floor(Math.random() * colors.length)]
+  }
   randomWordColor(){
     const fontColor = ["red", "yellow", "blue", "green", "orange", "purple", "pink", "brown", "gray"]
     return fontColor[Math.floor(Math.random() * fontColor.length)]
-
   }
   colorChosen(color) {
     console.log("clicked: ", color)
@@ -57,7 +65,7 @@ class Game extends React.Component {
 
     this.setState({
       phrase: this.randomPhrase(),
-      word: this.randomWord(),
+      word: this.wordLanguage(), 
       color: AnsColor,
       answers: buttonColors,
       count: this.state.count + 1,
@@ -84,11 +92,9 @@ class Game extends React.Component {
   // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
 
     colorDiff(){
-      let levelDiff 
       if (this.props.diff === "MEDIUM"){
         return this.changePhraseColor()
       } else if (this.props.diff === "HARD"){
-
         return this.changePhraseColor()
       } 
       return this.state.phrase
@@ -119,15 +125,37 @@ class Game extends React.Component {
                       "The flowers are quite",
                       "You look great in"]
 
-    if (this.props.diff === "MEDIUM"){
-      return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
-        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
-    } else if (this.props.diff === "HARD"){      
-      return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
-        <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
-    } else {
-      return phrases[Math.floor(Math.random() * phrases.length)]
-    }
+    const espanolPhrases =   ["El carro es", 
+                      "Hoy el cielo está", 
+                      "Mi color favorito es", 
+                      "Parece que esa naranja en realidad es", 
+                      "El pintor usó mucho", 
+                      "Me gustaba más antes de que lo pintaran de", 
+                      "Creo que mis uñas lucen mejor de", 
+                      "Tus zapatos son de un intenso", 
+                      "Normalmente no se ve gente de pelo", 
+                      "Creo que luciría mejor", 
+                      "El modo de hoy es oficialmente", 
+                      "No me parece que el pollo sea",
+                      "Tú bicicleta es",
+                      "Las flores son bastante",
+                      "Te ves muy bien de"]
+
+      if (this.props.lang === "ENGLISH"){
+        if (this.props.diff === "MEDIUM" || this.props.diff === "HARD"){
+          return phrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
+            <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
+        } else {
+          return phrases[Math.floor(Math.random() * phrases.length)]
+        }
+      } else if (this.props.lang === "SPANISH"){
+        if (this.props.diff === "MEDIUM" || this.props.diff === "HARD"){
+          return espanolPhrases[Math.floor(Math.random() * phrases.length)].split(" ").map((phraseWord) => 
+            <p className="med-diff-phrase" style={{ color: this.randomWordColor() }}> {phraseWord} </p> );
+        } else {
+          return espanolPhrases[Math.floor(Math.random() * phrases.length)]
+        }
+      }
   }
 
   render() {
@@ -157,7 +185,7 @@ class Game extends React.Component {
           <div className="timer-container">
             <Timer diff={this.props.diff} send={this.props.func} setCount1={this.props.setCount1}/>
             <button className="next-button" onClick={() => this.changeEverything()} >NEXT</button>
-            <button className="next-button" onClick={() => this.props.setCount1(10)} >set 10</button>
+
           </div>
         </div>
         <div>
