@@ -24,6 +24,29 @@ class Game extends React.Component {
       colorSelected: null
     }
   }
+
+  changeEverything(){
+    let score = this.state.countAns
+    let questionCount = this.state.count
+    if (this.state.colorSelected === this.state.color){
+      score ++
+    }
+
+    let AnsColor = this.randomWordColor()
+    let buttonColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
+      
+    buttonColors[indexAnswer()]= AnsColor
+
+    this.setState({
+      phrase: this.randomPhrase(),
+      word: this.wordLanguage(), 
+      color: AnsColor,
+      answers: buttonColors,
+      count: this.state.count + 1,
+      countAns: score 
+    })
+  }
+
   wordLanguage(){
     if (this.props.lang === "ENGLISH"){
       return this.randomWord()
@@ -48,30 +71,6 @@ class Game extends React.Component {
        this.setState({ colorSelected: color })
     }
 
-  changeEverything(){
-        let score = this.state.countAns
-        let questionCount = this.state.count
-    if (this.state.colorSelected === this.state.color){
-      score ++
-    }
-
-    let AnsColor = this.randomWordColor()
-    let buttonColors = [this.randomWordColor(),this.randomWordColor(),this.randomWordColor(),this.randomWordColor()]
-    console.log("respuesta: ", AnsColor)
-    // console.log("elegido: ", this.state.colorSelected)
-   
-       
-    buttonColors[indexAnswer()]= AnsColor
-
-    this.setState({
-      phrase: this.randomPhrase(),
-      word: this.wordLanguage(), 
-      color: AnsColor,
-      answers: buttonColors,
-      count: this.state.count + 1,
-      countAns: score 
-    })
-  }
           // SEND SCORE FUNCTION
 
     sendScore = () => {
