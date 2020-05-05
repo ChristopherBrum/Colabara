@@ -70,15 +70,11 @@ class Game extends React.Component {
     console.log("clicked: ", color)
        this.setState({ colorSelected: color })
     }
-
           // SEND SCORE FUNCTION
-
     sendScore = () => {
       this.props.func(this.state.count, this.state.countAns)
     }
-
            // INCREMENT COUNTER 
-
     increment() {
       this.setState({ count: this.state.count + 1
       });
@@ -87,9 +83,7 @@ class Game extends React.Component {
       this.setState({ countAns: this.state.count + 1
       });
     }; 
-
   // EASY/MEDIUM/HARD COLOR CHANGE LEVELS
-
     colorDiff(){
       if (this.props.diff === "MEDIUM"){
         return this.changePhraseColor()
@@ -104,9 +98,7 @@ class Game extends React.Component {
       colorfulPhrases.split(" ").map( word => {return <span style={{ color: this.randomWordColor() }}>{{word}}</span>;
       })
     }
-
   // EASY REFRESH OF PHRASE/WORD/WORD-COLOR
-
   randomPhrase(){
     const phrases =   ["The car is", 
                       "Today, the sky was", 
@@ -163,11 +155,9 @@ class Game extends React.Component {
         <div className="phrase-container">
           <p className="phrase">{this.state.phrase} <span className={this.state.color}>{this.state.word}</span>.</p>
         </div>
-
         <div className="game-box">
           <div className="answer-container">
             <div>
-
               <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[0])} >{this.state.answers[0]}</button>
             </div>
             <div>
@@ -178,13 +168,11 @@ class Game extends React.Component {
             </div>
             <div>
               <button style={this.props.diff === "HARD" ? {color: this.randomWordColor()} : {}} className="answer-button" onClick={() => this.colorChosen(this.state.answers[3])} >{this.state.answers[3]}</button>
-
             </div>
           </div>
           <div className="timer-container">
             <Timer diff={this.props.diff} send={this.props.func} setCount1={this.props.setCount1}/>
             <button className="next-button" onClick={() => this.changeEverything()} >NEXT</button>
-
           </div>
         </div>
         <div>
@@ -195,5 +183,4 @@ class Game extends React.Component {
     )
   }
 }
-
 export default Game
