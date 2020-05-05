@@ -83,8 +83,13 @@ body {
 }
 
 @media (min-width: 800px) {
+  .title-container {
+    margin-top: 2.5em;
+  }
+
   .title {
     font-size: 125px;
+    margin-left: .2em;
   }
 
   .sub-title {
