@@ -2,10 +2,6 @@ import React from 'react';
 import './Scores.css';
 import { Link } from "react-router-dom";
 
-function accuracy(){
-
-}
-
 function calcScore(){
     if (this.props.diff === "EASY"){
 
